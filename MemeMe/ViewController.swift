@@ -13,13 +13,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
-    @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var toolbarTop: UIToolbar!
+    @IBOutlet weak var toolbarBottom: UIToolbar!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
 
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.black,
+        NSAttributedString.Key.strokeWidth: -3,
         NSAttributedString.Key.foregroundColor: UIColor.white,
+        NSAttributedString.Key.backgroundColor: UIColor.clear,
         NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSAttributedString.Key.strokeWidth: 1.0
     ]
 
     override func viewDidLoad() {
@@ -27,26 +30,26 @@ class ViewController: UIViewController {
         topTextField.defaultTextAttributes = memeTextAttributes
         topTextField.text = "TOP"
         topTextField.textAlignment = .center
-//        topTextField.backgroundColor = .clear
-//        topTextField.textColor = .white
-//        topTextField.borderStyle = .none
+        topTextField.backgroundColor = .clear
+        topTextField.borderStyle = .none
         topTextField.delegate = self
 
         bottomTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.text = "BOTTOM"
         bottomTextField.textAlignment = .center
-//        bottomTextField.backgroundColor = .clear
+        bottomTextField.backgroundColor = .clear
+        bottomTextField.borderStyle = .none
         bottomTextField.delegate = self
     }
 
     // MARK: lifecycle
     override func viewWillAppear(_ animated: Bool) {
+        shareButton.isEnabled = false
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         subscribeToKeyboardNotifications()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
@@ -75,12 +78,13 @@ class ViewController: UIViewController {
     }
 
     func save(memedImage: UIImage) {
-            let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)
     }
 
     func generateMemedImage() -> UIImage {
         // Hide toolbar and navbar
-        toolbar.isHidden = true
+        toolbarTop.isHidden = true
+        toolbarBottom.isHidden = true
 
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -90,7 +94,8 @@ class ViewController: UIViewController {
         UIGraphicsEndImageContext()
 
         // Show toolbar and navbar
-        toolbar.isHidden = false
+        toolbarTop.isHidden = false
+        toolbarBottom.isHidden = false
 
         return memedImage
     }
@@ -99,19 +104,46 @@ class ViewController: UIViewController {
     @IBAction func takeNewPhoto(_ sender: Any) {
         let vc = UIImagePickerController()
         vc.delegate = self
+
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             vc.sourceType = .camera
         }
-        present(vc, animated: true, completion: nil)
+
+        present(vc, animated: true) {
+            self.shareButton.isEnabled = true
+        }
     }
 
     @IBAction func pickImageFromAlbum(_ sender: Any) {
         let vc = UIImagePickerController()
         vc.delegate = self
+
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             vc.sourceType = .photoLibrary
         }
-        present(vc, animated: true, completion: nil)
+
+        present(vc, animated: true) {
+            self.shareButton.isEnabled = true
+        }
+    }
+
+    @IBAction func share(_ sender: Any) {
+        let meme = generateMemedImage()
+        let vc = UIActivityViewController(activityItems: [meme], applicationActivities: [])
+
+        vc.completionWithItemsHandler = {activityType, completed, returnedItems, activityError in
+            
+            if activityError != nil {
+                print("error: \(activityError)")
+            }
+
+            self.save(memedImage: meme)
+        }
+
+        present(vc, animated: true)
+    }
+
+    @IBAction func cancel(_ sender: Any) {
     }
 }
 
