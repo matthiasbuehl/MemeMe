@@ -15,6 +15,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XCZ-np-9y8">
+                                <rect key="frame" x="0.0" y="44" width="414" height="768"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ex6-45-INw" userLabel="TOP">
+                                <rect key="frame" x="0.0" y="94" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="oxf-Ng-Mx8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="msB-gZ-4Iv" userLabel="BOTTOM">
+                                <rect key="frame" x="0.0" y="712" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Q7M-FK-0b7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S8z-1y-Ndi">
                                 <rect key="frame" x="0.0" y="812" width="414" height="50"/>
                                 <constraints>
@@ -33,40 +52,22 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Pm1-Ub-coY">
-                                <rect key="frame" x="0.0" y="44" width="414" height="768"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ex6-45-INw" userLabel="TOP">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="oxf-Ng-Mx8"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                                    </textField>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XCZ-np-9y8">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="668"/>
-                                    </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="msB-gZ-4Iv" userLabel="BOTTOM">
-                                        <rect key="frame" x="0.0" y="718" width="414" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Q7M-FK-0b7"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                                    </textField>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Pm1-Ub-coY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0eA-1C-Xb1"/>
-                            <constraint firstItem="Pm1-Ub-coY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="EKb-29-uMK"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Pm1-Ub-coY" secondAttribute="trailing" id="KIY-nm-Rog"/>
+                            <constraint firstItem="XCZ-np-9y8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="0BI-Xj-weF"/>
+                            <constraint firstItem="S8z-1y-Ndi" firstAttribute="top" secondItem="msB-gZ-4Iv" secondAttribute="bottom" constant="50" id="27C-7v-KIZ"/>
+                            <constraint firstItem="Ex6-45-INw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="EZH-mF-fnZ"/>
+                            <constraint firstItem="Ex6-45-INw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HFA-JP-oHl"/>
                             <constraint firstItem="S8z-1y-Ndi" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Sdw-h3-1E0"/>
-                            <constraint firstItem="S8z-1y-Ndi" firstAttribute="top" secondItem="Pm1-Ub-coY" secondAttribute="bottom" id="Uds-xn-ZXH"/>
+                            <constraint firstItem="msB-gZ-4Iv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Tif-9B-Ulc"/>
+                            <constraint firstItem="msB-gZ-4Iv" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="UUh-NT-EwH"/>
+                            <constraint firstItem="XCZ-np-9y8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Us6-v9-VNm"/>
                             <constraint firstItem="S8z-1y-Ndi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Wqe-Az-4iO"/>
+                            <constraint firstItem="S8z-1y-Ndi" firstAttribute="top" secondItem="XCZ-np-9y8" secondAttribute="bottom" id="cLe-jW-srO"/>
                             <constraint firstItem="S8z-1y-Ndi" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="j6v-wf-RdL"/>
+                            <constraint firstItem="XCZ-np-9y8" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="sWs-17-YRv"/>
+                            <constraint firstItem="Ex6-45-INw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="wMD-h7-huB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -74,6 +75,7 @@
                         <outlet property="bottomTextField" destination="msB-gZ-4Iv" id="zdL-Qt-xwr"/>
                         <outlet property="cameraButton" destination="xuC-yz-7iD" id="D1m-i7-l1A"/>
                         <outlet property="imageView" destination="XCZ-np-9y8" id="XVr-ub-Ncv"/>
+                        <outlet property="toolbar" destination="S8z-1y-Ndi" id="whf-VB-kFa"/>
                         <outlet property="topTextField" destination="Ex6-45-INw" id="xeC-S1-sxE"/>
                     </connections>
                 </viewController>

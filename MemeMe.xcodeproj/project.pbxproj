@@ -13,6 +13,7 @@
 		1868B6CD24FB123900402AAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1868B6CB24FB123900402AAA /* Main.storyboard */; };
 		1868B6CF24FB123A00402AAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1868B6CE24FB123A00402AAA /* Assets.xcassets */; };
 		1868B6D224FB123A00402AAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1868B6D024FB123A00402AAA /* LaunchScreen.storyboard */; };
+		1868B6DB24FB73B100402AAA /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1868B6DA24FB73B100402AAA /* Meme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		1868B6CE24FB123A00402AAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1868B6D124FB123A00402AAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1868B6D324FB123A00402AAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1868B6DA24FB73B100402AAA /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		1868B6C424FB123900402AAA /* MemeMe */ = {
 			isa = PBXGroup;
 			children = (
+				1868B6D924FB73A200402AAA /* Model */,
 				1868B6C524FB123900402AAA /* AppDelegate.swift */,
 				1868B6C724FB123900402AAA /* SceneDelegate.swift */,
 				1868B6C924FB123900402AAA /* ViewController.swift */,
@@ -65,6 +68,14 @@
 				1868B6D324FB123A00402AAA /* Info.plist */,
 			);
 			path = MemeMe;
+			sourceTree = "<group>";
+		};
+		1868B6D924FB73A200402AAA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1868B6DA24FB73B100402AAA /* Meme.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1868B6CA24FB123900402AAA /* ViewController.swift in Sources */,
+				1868B6DB24FB73B100402AAA /* Meme.swift in Sources */,
 				1868B6C624FB123900402AAA /* AppDelegate.swift in Sources */,
 				1868B6C824FB123900402AAA /* SceneDelegate.swift in Sources */,
 			);

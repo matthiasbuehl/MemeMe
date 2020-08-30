@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var toolbar: UIToolbar!
 
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.black,
@@ -25,14 +26,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         topTextField.defaultTextAttributes = memeTextAttributes
         topTextField.text = "TOP"
-        topTextField.contentHorizontalAlignment = .center
+        topTextField.textAlignment = .center
+//        topTextField.backgroundColor = .clear
+//        topTextField.textColor = .white
+//        topTextField.borderStyle = .none
         topTextField.delegate = self
 
         bottomTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.text = "BOTTOM"
-        bottomTextField.contentHorizontalAlignment = .center
+        bottomTextField.textAlignment = .center
+//        bottomTextField.backgroundColor = .clear
         bottomTextField.delegate = self
-
     }
 
     // MARK: lifecycle
@@ -68,6 +72,27 @@ class ViewController: UIViewController {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.cgRectValue.height
+    }
+
+    func save(memedImage: UIImage) {
+            let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)
+    }
+
+    func generateMemedImage() -> UIImage {
+        // Hide toolbar and navbar
+        toolbar.isHidden = true
+
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        // Show toolbar and navbar
+        toolbar.isHidden = false
+
+        return memedImage
     }
 
     // MARK: IBActions
