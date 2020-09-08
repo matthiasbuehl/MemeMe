@@ -14,3 +14,15 @@ struct Meme {
     let originalImage: UIImage
     let memedImage: UIImage
 }
+
+extension Meme {
+    static var sentMemes: [Meme] {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.memes
+    }
+
+    func save(meme: Meme) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.memes.append(meme)
+    }
+}

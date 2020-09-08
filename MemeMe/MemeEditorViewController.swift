@@ -33,6 +33,10 @@ class MemeEditorViewController: UIViewController {
 
         configure(topTextField, with: defaultTextTop)
         configure(bottomTextField, with: defaultTextBottom)
+        configureBottomToolbar()
+        configureToolbars(hide: true)
+        tabBarController?.tabBar.isHidden = true
+        navigationController?.navigationBar.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +65,13 @@ class MemeEditorViewController: UIViewController {
     func configureToolbars(hide: Bool) {
         toolbarTop.isHidden = hide
         toolbarBottom.isHidden = hide
+    }
+
+    func configureBottomToolbar() {
+        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        toolbarItems = [add, spacer]
+        navigationController?.setToolbarHidden(false, animated: false)
     }
 
     func subscribeToKeyboardNotifications() {
@@ -124,6 +135,7 @@ class MemeEditorViewController: UIViewController {
     }
 
     // MARK: IBActions
+
     @IBAction func takeNewPhoto(_ sender: Any) {
         pickAnImage(from: .camera)
     }
@@ -151,6 +163,9 @@ class MemeEditorViewController: UIViewController {
     }
 
     @IBAction func cancel(_ sender: Any) {
+        tabBarController?.tabBar.isHidden = false
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.popViewController(animated: true)
     }
 }
 
