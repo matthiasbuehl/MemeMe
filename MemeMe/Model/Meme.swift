@@ -21,8 +21,8 @@ extension Meme {
         return appDelegate.memes
     }
 
-    func save(meme: Meme) {
+    func save() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.memes.append(meme)
+        appDelegate.memes.append(self)
     }
 }

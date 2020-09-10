@@ -10,15 +10,13 @@ import UIKit
 
 class MemeEditorViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
-    @IBOutlet weak var toolbarTop: UIToolbar!
-    @IBOutlet weak var toolbarBottom: UIToolbar!
-    @IBOutlet weak var shareButton: UIBarButtonItem!
+
 
     let defaultTextTop = "TOP"
     let defaultTextBottom = "BOTTOM"
+    let shareBtn = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share(_:)))
 
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.black,
@@ -33,17 +31,17 @@ class MemeEditorViewController: UIViewController {
 
         configure(topTextField, with: defaultTextTop)
         configure(bottomTextField, with: defaultTextBottom)
+        configureNavigationBar()
         configureBottomToolbar()
-        configureToolbars(hide: true)
-        tabBarController?.tabBar.isHidden = true
-        navigationController?.navigationBar.isHidden = true
+//        tabBarController?.tabBar.isHidden = true
+//        navigationController?.navigationBar.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        shareButton.isEnabled = false
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+//        shareButton.isEnabled = false
+//        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
 
         subscribeToKeyboardNotifications()
     }
@@ -63,14 +61,21 @@ class MemeEditorViewController: UIViewController {
     }
 
     func configureToolbars(hide: Bool) {
-        toolbarTop.isHidden = hide
-        toolbarBottom.isHidden = hide
+        navigationController?.setToolbarHidden(hide, animated: false)
+        navigationController?.navigationBar.isHidden = hide
+    }
+
+    func configureNavigationBar() {
+        navigationItem.rightBarButtonItem = shareBtn
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancel(_:)))
     }
 
     func configureBottomToolbar() {
-        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
-        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        toolbarItems = [add, spacer]
+        let cameraBtn = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(takeNewPhoto))
+        let albumBtn = UIBarButtonItem(barButtonSystemItem: .play , target: self, action: #selector(pickImageFromAlbum))
+        let spacerBtn = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+
+        toolbarItems = [cameraBtn, spacerBtn, albumBtn]
         navigationController?.setToolbarHidden(false, animated: false)
     }
 
@@ -82,6 +87,38 @@ class MemeEditorViewController: UIViewController {
     func unsubscribeFromKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc func takeNewPhoto(_ sender: Any) {
+        pickAnImage(from: .camera)
+    }
+
+    @objc func pickImageFromAlbum(_ sender: Any) {
+        pickAnImage(from: .photoLibrary)
+    }
+
+    @objc func share(_ sender: Any) {
+        let meme = generateMemedImage()
+        let vc = UIActivityViewController(activityItems: [meme], applicationActivities: [])
+
+        vc.completionWithItemsHandler = {activityType, completed, returnedItems, activityError in
+
+            if activityError != nil {
+                print("error: \(activityError)")
+            }
+
+            if completed {
+                self.save(memedImage: meme)
+            }
+        }
+
+        present(vc, animated: true)
+    }
+
+    @objc func cancel(_ sender: Any) {
+        tabBarController?.tabBar.isHidden = false
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.popViewController(animated: true)
     }
 
     @objc func keyboardWillShow(_ notification:Notification) {
@@ -100,8 +137,10 @@ class MemeEditorViewController: UIViewController {
         return keyboardSize.cgRectValue.height
     }
 
-    func save(memedImage: UIImage) {
+    func
+        save(memedImage: UIImage) {
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)
+        meme.save()
     }
 
     func generateMemedImage() -> UIImage {
@@ -130,42 +169,8 @@ class MemeEditorViewController: UIViewController {
         }
 
         present(vc, animated: true) {
-            self.shareButton.isEnabled = true
+            self.shareBtn.isEnabled = true
         }
-    }
-
-    // MARK: IBActions
-
-    @IBAction func takeNewPhoto(_ sender: Any) {
-        pickAnImage(from: .camera)
-    }
-
-    @IBAction func pickImageFromAlbum(_ sender: Any) {
-        pickAnImage(from: .photoLibrary)
-    }
-
-    @IBAction func share(_ sender: Any) {
-        let meme = generateMemedImage()
-        let vc = UIActivityViewController(activityItems: [meme], applicationActivities: [])
-
-        vc.completionWithItemsHandler = {activityType, completed, returnedItems, activityError in
-            
-            if activityError != nil {
-                print("error: \(activityError)")
-            }
-
-            if completed {
-                self.save(memedImage: meme)
-            }
-        }
-
-        present(vc, animated: true)
-    }
-
-    @IBAction func cancel(_ sender: Any) {
-        tabBarController?.tabBar.isHidden = false
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.popViewController(animated: true)
     }
 }
 

@@ -20,6 +20,7 @@ class SentItemsCollectionViewController: UICollectionViewController {
 
     @objc func addMeme() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
+        vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
 
     }

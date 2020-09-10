@@ -67,30 +67,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XCZ-np-9y8">
-                                <rect key="frame" x="0.0" y="44" width="414" height="768"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iAT-AZ-zSj" userLabel="Toolbar Top">
-                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Oh4-tY-QC1"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem title="Share" image="square.and.arrow.up" catalog="system" id="JwK-rz-tit">
-                                        <connections>
-                                            <action selector="share:" destination="BYZ-38-t0r" id="PeQ-hI-lPx"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="zrY-yC-U68"/>
-                                    <barButtonItem title="Cancel" id="1Ud-aY-8FV">
-                                        <connections>
-                                            <action selector="cancel:" destination="BYZ-38-t0r" id="lzb-Aq-Tjv"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ex6-45-INw" userLabel="TOP">
-                                <rect key="frame" x="0.0" y="138" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="oxf-Ng-Mx8"/>
                                 </constraints>
@@ -98,62 +79,33 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="msB-gZ-4Iv" userLabel="BOTTOM">
-                                <rect key="frame" x="0.0" y="712" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="762" width="414" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Q7M-FK-0b7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="34"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S8z-1y-Ndi" userLabel="Toolbar Bottom">
-                                <rect key="frame" x="0.0" y="812" width="414" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="HLA-f5-dPy"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem title="Photo" image="photo" catalog="system" id="ejF-TQ-2Uw">
-                                        <connections>
-                                            <action selector="pickImageFromAlbum:" destination="BYZ-38-t0r" id="yt3-9A-bcR"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Bse-rC-KeC"/>
-                                    <barButtonItem title="Camera" image="camera" catalog="system" id="xuC-yz-7iD">
-                                        <connections>
-                                            <action selector="takeNewPhoto:" destination="BYZ-38-t0r" id="Sak-xD-57O"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="XCZ-np-9y8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="0BI-Xj-weF"/>
-                            <constraint firstItem="S8z-1y-Ndi" firstAttribute="top" secondItem="msB-gZ-4Iv" secondAttribute="bottom" constant="50" id="27C-7v-KIZ"/>
-                            <constraint firstItem="Ex6-45-INw" firstAttribute="top" secondItem="iAT-AZ-zSj" secondAttribute="bottom" constant="44" id="EZH-mF-fnZ"/>
-                            <constraint firstItem="iAT-AZ-zSj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="FwO-1v-bS7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="msB-gZ-4Iv" secondAttribute="bottom" constant="50" id="BgZ-0o-E16"/>
                             <constraint firstItem="Ex6-45-INw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HFA-JP-oHl"/>
-                            <constraint firstItem="S8z-1y-Ndi" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Sdw-h3-1E0"/>
                             <constraint firstItem="msB-gZ-4Iv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Tif-9B-Ulc"/>
                             <constraint firstItem="msB-gZ-4Iv" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="UUh-NT-EwH"/>
                             <constraint firstItem="XCZ-np-9y8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Us6-v9-VNm"/>
-                            <constraint firstItem="S8z-1y-Ndi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Wqe-Az-4iO"/>
-                            <constraint firstItem="S8z-1y-Ndi" firstAttribute="top" secondItem="XCZ-np-9y8" secondAttribute="bottom" id="cLe-jW-srO"/>
-                            <constraint firstItem="iAT-AZ-zSj" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fd0-bY-tjB"/>
-                            <constraint firstItem="S8z-1y-Ndi" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="j6v-wf-RdL"/>
+                            <constraint firstItem="Ex6-45-INw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="aey-zL-zIQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XCZ-np-9y8" secondAttribute="bottom" id="rhU-9v-BOA"/>
                             <constraint firstItem="XCZ-np-9y8" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="sWs-17-YRv"/>
                             <constraint firstItem="Ex6-45-INw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="wMD-h7-huB"/>
-                            <constraint firstItem="iAT-AZ-zSj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ww2-g9-dm2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="iaa-T3-Y5u"/>
                     <connections>
                         <outlet property="bottomTextField" destination="msB-gZ-4Iv" id="zdL-Qt-xwr"/>
-                        <outlet property="cameraButton" destination="xuC-yz-7iD" id="D1m-i7-l1A"/>
                         <outlet property="imageView" destination="XCZ-np-9y8" id="XVr-ub-Ncv"/>
-                        <outlet property="shareButton" destination="JwK-rz-tit" id="e6a-gX-nG6"/>
-                        <outlet property="toolbarBottom" destination="S8z-1y-Ndi" id="whf-VB-kFa"/>
-                        <outlet property="toolbarTop" destination="iAT-AZ-zSj" id="amn-mJ-2uI"/>
                         <outlet property="topTextField" destination="Ex6-45-INw" id="xeC-S1-sxE"/>
                     </connections>
                 </viewController>
@@ -247,9 +199,4 @@
             <point key="canvasLocation" x="1571" y="131"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="camera" catalog="system" width="128" height="96"/>
-        <image name="photo" catalog="system" width="128" height="93"/>
-        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
-    </resources>
 </document>
