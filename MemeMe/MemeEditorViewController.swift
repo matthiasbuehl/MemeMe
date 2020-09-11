@@ -13,10 +13,11 @@ class MemeEditorViewController: UIViewController {
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
 
+    var delegate: Sharing?
 
     let defaultTextTop = "TOP"
     let defaultTextBottom = "BOTTOM"
-    let shareBtn = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share(_:)))
+//    let shareBtn = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(share))
 
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.black,
@@ -66,8 +67,8 @@ class MemeEditorViewController: UIViewController {
     }
 
     func configureNavigationBar() {
-        navigationItem.rightBarButtonItem = shareBtn
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancel(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(share))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancel))
     }
 
     func configureBottomToolbar() {
@@ -97,7 +98,7 @@ class MemeEditorViewController: UIViewController {
         pickAnImage(from: .photoLibrary)
     }
 
-    @objc func share(_ sender: Any) {
+    @objc func share() {
         let meme = generateMemedImage()
         let vc = UIActivityViewController(activityItems: [meme], applicationActivities: [])
 
@@ -115,7 +116,7 @@ class MemeEditorViewController: UIViewController {
         present(vc, animated: true)
     }
 
-    @objc func cancel(_ sender: Any) {
+    @objc func cancel() {
         tabBarController?.tabBar.isHidden = false
         navigationController?.navigationBar.isHidden = false
         navigationController?.popViewController(animated: true)
@@ -141,6 +142,8 @@ class MemeEditorViewController: UIViewController {
         save(memedImage: UIImage) {
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)
         meme.save()
+        
+        delegate?.afterSharing()
     }
 
     func generateMemedImage() -> UIImage {
@@ -169,7 +172,7 @@ class MemeEditorViewController: UIViewController {
         }
 
         present(vc, animated: true) {
-            self.shareBtn.isEnabled = true
+            //self.shareBtn.isEnabled = true
         }
     }
 }
@@ -197,4 +200,8 @@ extension MemeEditorViewController : UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+}
+
+protocol Sharing {
+    func afterSharing()
 }

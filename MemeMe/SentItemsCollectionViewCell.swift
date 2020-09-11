@@ -10,4 +10,5 @@ import UIKit
 
 class SentItemsCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var imageView: UIImageView!
 }
