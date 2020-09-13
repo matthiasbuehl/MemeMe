@@ -12,14 +12,21 @@ class SentItemsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Sent Memes Grid"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .plain, target: self, action: #selector(addMeme))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("table view will appear")
+        tableView.reloadData()
+    }
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-
-        self.navigationItem.title = "Sent Memes Table"
+    @objc func addMeme() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
+        vc.hidesBottomBarWhenPushed = true
+//        vc.delegate = self
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     // MARK: - Table view data source
@@ -39,9 +46,8 @@ class SentItemsTableViewController: UITableViewController {
     }
 }
 
-extension SentItemsTableViewController: Sharing {
-    func afterSharing() {
-        print("afterSharing")
-        self.tableView.reloadData()
-    }
-}
+//extension SentItemsTableViewController: Sharing {
+//    func afterSharing() {
+//        self.tableView.reloadData()
+//    }
+//}
