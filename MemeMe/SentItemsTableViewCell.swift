@@ -10,4 +10,6 @@ import UIKit
 
 class SentItemsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var memeLabel: UILabel!
+    @IBOutlet weak var memeImage: UIImageView!
 }

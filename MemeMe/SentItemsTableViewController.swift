@@ -12,7 +12,7 @@ class SentItemsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Sent Memes Grid"
+        self.navigationItem.title = "Sent Memes Table"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .plain, target: self, action: #selector(addMeme))
     }
     
@@ -33,10 +33,11 @@ class SentItemsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SentItemsTableViewCell") as! SentItemsTableViewCell
         let meme = Meme.sentMemes[indexPath.row]
-        cell.textLabel?.text = meme.topText
-        cell.imageView?.image = meme.memedImage
+        cell.memeLabel?.textAlignment = .center
+        cell.memeLabel?.text = meme.topText
+        cell.memeImage?.image = meme.memedImage
 
         return cell
     }

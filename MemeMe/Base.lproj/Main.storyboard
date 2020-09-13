@@ -184,13 +184,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Z4G-Rh-Lbk">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SentItemsTableViewCell" id="Z4G-Rh-Lbk" customClass="SentItemsTableViewCell" customModule="MemeMe" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z4G-Rh-Lbk" id="LU2-ar-mkV">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcx-Co-k5U">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XQw-Xa-pbM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="232" height="55"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktO-mF-Khm">
+                                                    <rect key="frame" x="232" y="0.0" width="182" height="55"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="XQw-Xa-pbM" firstAttribute="width" secondItem="ktO-mF-Khm" secondAttribute="width" multiplier="1.27473" id="4Ye-NV-hMW"/>
+                                                <constraint firstAttribute="bottom" secondItem="XQw-Xa-pbM" secondAttribute="bottom" id="KTW-up-1q1"/>
+                                                <constraint firstAttribute="trailing" secondItem="ktO-mF-Khm" secondAttribute="trailing" id="N9C-dl-KeO"/>
+                                                <constraint firstItem="ktO-mF-Khm" firstAttribute="leading" secondItem="XQw-Xa-pbM" secondAttribute="trailing" id="OTu-gW-nnK"/>
+                                                <constraint firstItem="ktO-mF-Khm" firstAttribute="leading" secondItem="XQw-Xa-pbM" secondAttribute="trailing" id="OX5-lB-D4q"/>
+                                                <constraint firstItem="ktO-mF-Khm" firstAttribute="top" secondItem="gcx-Co-k5U" secondAttribute="top" id="kzD-6k-pIQ"/>
+                                                <constraint firstItem="XQw-Xa-pbM" firstAttribute="leading" secondItem="gcx-Co-k5U" secondAttribute="leading" id="p45-1o-XRM"/>
+                                                <constraint firstItem="XQw-Xa-pbM" firstAttribute="top" secondItem="gcx-Co-k5U" secondAttribute="top" id="qYr-s2-f4d"/>
+                                                <constraint firstAttribute="bottom" secondItem="ktO-mF-Khm" secondAttribute="bottom" id="uVy-RU-Jox"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="gcx-Co-k5U" firstAttribute="top" secondItem="LU2-ar-mkV" secondAttribute="top" id="2aa-Cu-yzN"/>
+                                        <constraint firstAttribute="bottom" secondItem="gcx-Co-k5U" secondAttribute="bottom" id="8BY-Ym-ECj"/>
+                                        <constraint firstAttribute="trailing" secondItem="gcx-Co-k5U" secondAttribute="trailing" id="N8u-rm-NEk"/>
+                                        <constraint firstItem="gcx-Co-k5U" firstAttribute="leading" secondItem="LU2-ar-mkV" secondAttribute="leading" id="UrJ-Gh-2yE"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="memeImage" destination="XQw-Xa-pbM" id="bGQ-KK-3qW"/>
+                                    <outlet property="memeLabel" destination="ktO-mF-Khm" id="lLU-Ee-HUm"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -202,7 +239,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VJb-uI-pZo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1571" y="131"/>
+            <point key="canvasLocation" x="1569.5652173913045" y="130.58035714285714"/>
         </scene>
     </scenes>
 </document>
