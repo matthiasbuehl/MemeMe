@@ -24,15 +24,11 @@ class SentItemsTableViewController: UITableViewController {
     @objc func addMeme() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
         vc.hidesBottomBarWhenPushed = true
-//        vc.delegate = self
         
         navigationController?.pushViewController(vc, animated: true)
     }
 
-    // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return Meme.sentMemes.count
     }
 
@@ -45,9 +41,3 @@ class SentItemsTableViewController: UITableViewController {
         return cell
     }
 }
-
-//extension SentItemsTableViewController: Sharing {
-//    func afterSharing() {
-//        self.tableView.reloadData()
-//    }
-//}

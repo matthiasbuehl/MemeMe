@@ -15,8 +15,6 @@ class MemeEditorViewController: UIViewController {
     
     let cameraBtn = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(takeNewPhoto))
     
-    //    var delegate: Sharing?
-    
     let defaultTextTop = "TOP"
     let defaultTextBottom = "BOTTOM"
     
@@ -50,6 +48,7 @@ class MemeEditorViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
+        configureToolbars(hide: true)
     }
     
     func configure(_ textField: UITextField, with defaultText: String) {
@@ -202,7 +201,3 @@ extension MemeEditorViewController : UITextFieldDelegate {
         return true
     }
 }
-
-//protocol Sharing {
-//    func afterSharing()
-//}

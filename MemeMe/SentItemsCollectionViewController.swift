@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "cell"
+private let reuseIdentifier = "SentItemsCollectionViewCell"
 
 class SentItemsCollectionViewController: UICollectionViewController {
     
@@ -27,12 +27,14 @@ class SentItemsCollectionViewController: UICollectionViewController {
     
     func setupFlowLayout() {
         let space:CGFloat = 2.0
-        let width = (view.frame.size.width - (2 * space)) / 5.0
-        let height = (view.frame.size.height - (2 * space)) / 5.0
+        let width = (view.frame.size.width - (2 * space)) / 2.0
+        let height = (view.frame.size.height - (2 * space)) / 2.0
         
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
-        flowLayout.itemSize = CGSize(width: 10.0, height: 10.0)
+        flowLayout.itemSize = CGSize(width: width, height:height)
+        
+        collectionView.collectionViewLayout = flowLayout
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,13 +45,10 @@ class SentItemsCollectionViewController: UICollectionViewController {
     @objc func addMeme() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
         vc.hidesBottomBarWhenPushed = true
-//        vc.delegate = self
         
         navigationController?.pushViewController(vc, animated: true)
         
     }
-    
-    // MARK: UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Meme.sentMemes.count
@@ -64,9 +63,3 @@ class SentItemsCollectionViewController: UICollectionViewController {
         return cell
     }
 }
-
-//extension SentItemsCollectionViewController: Sharing {
-//    func afterSharing() {
-//        self.collectionView.reloadData()
-//    }
-//}
