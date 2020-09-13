@@ -42,4 +42,10 @@ class SentItemsTableViewController: UITableViewController {
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let memeDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        memeDetailViewController.meme = Meme.sentMemes[indexPath.row]
+        self.navigationController?.pushViewController(memeDetailViewController, animated: true)
+    }
 }
