@@ -20,6 +20,12 @@ class SentItemsCollectionViewController: UICollectionViewController {
         setupFlowLayout()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("collection view will appear")
+        navigationController?.navigationBar.isHidden = false
+        collectionView.reloadData()
+    }
+
     func setupNav() {
         self.navigationItem.title = "Sent Memes Grid"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .plain, target: self, action: #selector(addMeme))
@@ -35,11 +41,6 @@ class SentItemsCollectionViewController: UICollectionViewController {
         flowLayout.itemSize = CGSize(width: width, height:height)
         
         collectionView.collectionViewLayout = flowLayout
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        print("collection view will appear")
-        collectionView.reloadData()
     }
     
     @objc func addMeme() {

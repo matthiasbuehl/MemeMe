@@ -141,8 +141,6 @@ class MemeEditorViewController: UIViewController {
         save(memedImage: UIImage) {
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)
         meme.save()
-        
-        //        delegate?.afterSharing()
     }
     
     func generateMemedImage() -> UIImage {

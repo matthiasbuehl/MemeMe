@@ -18,6 +18,7 @@ class SentItemsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         print("table view will appear")
+        navigationController?.navigationBar.isHidden = false
         tableView.reloadData()
     }
 

@@ -43,7 +43,6 @@
                                         <constraint firstAttribute="bottom" secondItem="YUe-af-dng" secondAttribute="bottom" id="y8y-ka-Yu8"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <size key="customSize" width="328" height="224"/>
                                 <connections>
                                     <outlet property="imageView" destination="YUe-af-dng" id="29n-GG-nwX"/>
