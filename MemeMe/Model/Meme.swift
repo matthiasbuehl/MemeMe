@@ -17,12 +17,10 @@ struct Meme {
 
 extension Meme {
     static var sentMemes: [Meme] {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.memes
+        Data.shared.sentMemes
     }
 
     func save() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.memes.append(self)
+        Data.shared.saveMeme(meme: self)
     }
 }
